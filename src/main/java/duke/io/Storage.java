@@ -8,7 +8,12 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import duke.exception.DukeException;
-import duke.task.*;
+import duke.task.Deadline;
+import duke.task.Event;
+import duke.task.Period;
+import duke.task.Task;
+import duke.task.TaskList;
+import duke.task.Todo;
 
 /**
  * Encapsulates the methods used to read and store data onto disk.

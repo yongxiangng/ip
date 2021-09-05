@@ -2,7 +2,12 @@ package duke.io;
 
 import duke.command.Command;
 import duke.exception.DukeException;
-import duke.task.*;
+import duke.task.Deadline;
+import duke.task.Event;
+import duke.task.Period;
+import duke.task.Task;
+import duke.task.TaskList;
+import duke.task.Todo;
 
 /**
  * Encapsulates parsing of user inputs into the list of tasks.

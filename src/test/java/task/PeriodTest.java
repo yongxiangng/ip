@@ -1,9 +1,10 @@
 package task;
 
-import duke.task.Period;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import duke.task.Period;
 
 public class PeriodTest {
     @Test
@@ -15,7 +16,7 @@ public class PeriodTest {
     @Test
     public void stringRepresentation() {
         Period period = new Period("Finish iP", "22 Aug 2021", "3 Sep 2021");
-        assertEquals("[P][ ] Finish iP (starting: 22 Aug 2021, ending: 3 Sep 2021)",period.toString());
+        assertEquals("[P][ ] Finish iP (starting: 22 Aug 2021, ending: 3 Sep 2021)", period.toString());
     }
 
     @Test
