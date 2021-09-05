@@ -2,11 +2,7 @@ package duke.io;
 
 import duke.command.Command;
 import duke.exception.DukeException;
-import duke.task.Deadline;
-import duke.task.Event;
-import duke.task.Task;
-import duke.task.TaskList;
-import duke.task.Todo;
+import duke.task.*;
 
 /**
  * Encapsulates parsing of user inputs into the list of tasks.
@@ -63,6 +59,9 @@ public class Parser {
             break;
         case EVENT:
             message = addEvent(userInput);
+            break;
+        case PERIOD:
+            message = addPeriod(userInput);
             break;
         case DELETE:
             message = deleteTask(userInput);
@@ -137,7 +136,25 @@ public class Parser {
             String by = userInput[1].split(" /at ")[1];
             return addTask(new Event(eventDescription, by));
         } catch (IndexOutOfBoundsException e) {
-            throw new DukeException("duke.task.Event description and time at cannot be empty");
+            throw new DukeException("Event description and time at cannot be empty");
+        }
+    }
+
+    /**
+     * Adds a period task to the list of task.
+     *
+     * @param userInput given by user.
+     * @return string to inform user of successful command.
+     * @throws DukeException error when adding task.
+     */
+    private String addPeriod(String... userInput) throws DukeException {
+        try {
+            String eventDescription = userInput[1].split(" /start ")[0];
+            String start = userInput[1].split(" /start ")[1].split(" /end ")[0];
+            String end = userInput[1].split(" /start ")[1].split(" /end ")[1];
+            return addTask(new Period(eventDescription, start, end));
+        } catch (IndexOutOfBoundsException e) {
+            throw new DukeException("Period description and times cannot be empty");
         }
     }
 
